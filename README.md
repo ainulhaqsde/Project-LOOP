@@ -1,637 +1,662 @@
-# 🔁 LOOP — AI Customer Feedback Intelligence Platform
+# 🔄 Project LOOP
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5\&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3\&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript\&logoColor=black)
-![Responsive](https://img.shields.io/badge/Responsive-Yes-brightgreen)
-![Status](https://img.shields.io/badge/Status-Final%20Frontend-success)
-![API Ready](https://img.shields.io/badge/API-Integration%20Ready-blue)
+## AI Customer Feedback Intelligence Platform
 
-A **production-style frontend** for **LOOP — AI Customer Feedback Intelligence Platform**.
+> **“Close the loop on customer feedback.”**
 
-LOOP is designed to help teams collect, organize, analyze, and understand customer feedback through a modern workspace that supports **feedback management, analytics, trends, AI-powered insights, reports, and role-based access**.
+**Project LOOP** is a full-stack AI-powered customer feedback intelligence platform designed to help teams collect, organize, analyze, and understand customer feedback.
+
+It combines **feedback management, sentiment analysis, recurring theme detection, analytics, and Ask LOOP AI** to transform customer feedback into actionable business insights.
 
 ---
 
 ## 🚀 Features
 
-* 🔐 **Authentication / Workspace Entry**
-* 👥 **Role-Aware Workspace UI**
+- 🔐 **User Authentication**
+  - User Registration
+  - User Login
+  - JWT-based Authentication
+  - Protected Routes
 
-  * Admin
-  * Analyst
-  * Viewer
-* 💬 **Feedback Ingestion & Inbox**
-* 🔎 **Search, Filter & Status Workflow**
-* 📊 **Dashboard Analytics**
-* 🧩 **Theme Clustering**
-* 📈 **Feedback Trends**
-* 🤖 **Ask LOOP AI Interface**
-* 📚 **Grounded AI Responses**
-* 📝 **Voice-of-Customer Reports**
-* 📱 **Responsive User Interface**
-* ⚠️ **Empty, Loading & Error-Ready States**
-* 🔌 **Backend API Integration Layer**
-* 🧪 **Seed-Style Frontend Data for Development**
+- 💬 **Customer Feedback Management**
+  - Add Customer Feedback
+  - Store Feedback in MongoDB
+  - View Feedback
+  - Feedback Library
+
+- 📊 **Analytics Dashboard**
+  - Total Feedback
+  - Positive Feedback
+  - Negative Feedback
+  - Neutral Feedback
+  - Sentiment Distribution
+  - Recent Feedback
+  - Customer Themes
+  - LOOP Intelligence
+
+- 😊 **AI Sentiment Analysis**
+  - Positive Sentiment
+  - Negative Sentiment
+  - Neutral Sentiment
+
+- 🧩 **Customer Theme Detection**
+  - Detect recurring customer topics
+  - Identify customer concerns
+  - Discover satisfaction patterns
+  - Highlight important feedback themes
+
+- 🤖 **Ask LOOP AI**
+  - Feedback-grounded AI Q&A
+  - Customer feedback summaries
+  - Main complaint identification
+  - Customer satisfaction insights
+  - Recurring theme analysis
+  - AI-generated recommendations
+
+- 🗃️ **MongoDB Data Persistence**
+
+- 🛡️ **Admin Functionality**
+
+- 📱 **Responsive User Interface**
+  - Desktop
+  - Laptop
+  - Tablet
+  - Mobile
 
 ---
 
-## 🖼️ Project Preview
+## 🧠 What is Project LOOP?
 
-Add your project screenshots inside the repository and use:
+**Project LOOP** is an AI Customer Feedback Intelligence Platform that helps transform raw customer feedback into meaningful business intelligence.
 
-```markdown
-![LOOP Dashboard](./screenshot.png)
-```
+Instead of manually reading every feedback entry, LOOP helps users understand:
 
-You can also create a screenshots folder:
+- What customers are saying
+- Whether feedback is positive, negative, or neutral
+- What customers are complaining about
+- What customers are satisfied with
+- Which themes appear repeatedly
+- What actions could improve customer satisfaction
+
+The platform combines traditional analytics with AI-powered feedback intelligence.
+
+---
+
+## 🔄 How Project LOOP Works
 
 ```text
-screenshots/
-├── dashboard.png
-├── inbox.png
-├── trends.png
-├── ask-loop.png
-└── reports.png
+Customer Feedback
+        ↓
+React + Vite Frontend
+        ↓
+Node.js / Express Backend
+        ↓
+MongoDB Database
+        ↓
+Sentiment & Theme Analysis
+        ↓
+Google Gemini AI
+        ↓
+Dashboard + Ask LOOP Insights
 ```
 
-Then use:
+Customer feedback is submitted through the application and stored in MongoDB.
 
-```markdown
-![Dashboard](./screenshots/dashboard.png)
-![Inbox](./screenshots/inbox.png)
-![Trends](./screenshots/trends.png)
-![Ask LOOP](./screenshots/ask-loop.png)
-```
+The platform analyzes the feedback to identify sentiment and recurring customer themes.
+
+The dashboard presents this information visually, while **Ask LOOP AI** allows users to ask questions about customer feedback and receive useful AI-generated business insights.
 
 ---
 
-## 🧠 What is LOOP?
+# 🛠️ Tech Stack
 
-**LOOP** is a customer feedback intelligence platform designed to transform customer feedback into useful business insights.
+## 💻 Frontend
 
-The frontend provides dedicated interfaces for:
+- React
+- Vite
+- JavaScript
+- CSS
+- Responsive Web Design
+- Recharts
+- React Icons
 
-* Managing feedback
-* Monitoring analytics
-* Finding customer sentiment patterns
-* Discovering recurring themes
-* Tracking trends
-* Asking AI questions about customer feedback
-* Generating Voice-of-Customer reports
-* Managing workspace users and roles
+## ⚙️ Backend
 
-The frontend is designed so that it can later connect to a complete backend without requiring major UI changes.
+- Node.js
+- Express.js
+- REST API
+- JWT Authentication
+- bcrypt
+- Mongoose
+
+## 🗃️ Database
+
+- MongoDB
+
+## 🤖 Artificial Intelligence
+
+- Google Gemini API
+- AI Sentiment Analysis
+- Customer Theme Analysis
+- Feedback-grounded AI Q&A
+- AI-generated Business Insights
 
 ---
 
-## 🛠️ Tech Stack
-
-### 💻 Frontend
-
-* HTML5
-* CSS3
-* JavaScript
-* Browser Local Storage
-* Responsive Web Design
-
-### 🔌 Backend Integration
-
-The frontend includes a centralized API integration layer through:
+# 📂 Project Structure
 
 ```text
-assets/api.js
-```
-
-The expected backend architecture can use:
-
-* Node.js
-* REST API
-* PostgreSQL
-* Prisma ORM
-* Authentication
-* Role-Based Authorization
-* AI Integration
-* Retrieval-based AI responses
-
----
-
-## 📂 Project Structure
-
-```text
-LOOP-Frontend-Final/
+Project-LOOP/
 │
-├── index.html
-├── README.md
+├── BackEnd/
+│   ├── config/
+│   ├── controller/
+│   ├── middleware/
+│   ├── model/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── index.js
+│   ├── package.json
+│   └── package-lock.json
 │
-├── assets/
-│   ├── style.css
-│   ├── app.js
-│   ├── data.js
-│   └── api.js
+├── FrontEnd/
+│   ├── public/
+│   ├── src/
+│   │   ├── Components/
+│   │   ├── Pages/
+│   │   ├── services/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
 │
-└── pages/
-    ├── dashboard.html
-    ├── inbox.html
-    ├── trends.html
-    ├── ask.html
-    ├── reports.html
-    └── settings.html
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-# ⚙️ Run the Project in VS Code
+# ⚙️ Environment Variables
 
-There are two simple ways to run the frontend locally.
+Create a `.env` file inside the:
+
+```text
+BackEnd/
+```
+
+directory.
+
+Example:
+
+```env
+PORT=5000
+
+MONGO_URI=mongodb://127.0.0.1:27017/project_loop
+
+JWT_SECRET=your_secure_jwt_secret
+
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+> ⚠️ Never upload your real `.env`, Gemini API key, JWT secret, database credentials, or other private credentials to GitHub.
+
+The `.env` file should remain excluded through `.gitignore`.
 
 ---
 
-## Option A — Live Server
+# 🚀 Run Project Locally
 
-### 1️⃣ Open the Project
+## Prerequisites
 
-Open:
+Make sure you have installed:
 
-```text
-LOOP-Frontend-Final
-```
+- Node.js
+- npm
+- MongoDB
+- Git
+- Visual Studio Code
 
-in **Visual Studio Code**.
-
-### 2️⃣ Install Live Server
-
-Open the VS Code Extensions panel and search for:
-
-```text
-Live Server
-```
-
-Install it.
-
-### 3️⃣ Start the Website
-
-Right-click:
-
-```text
-index.html
-```
-
-Then select:
-
-```text
-Open with Live Server
-```
-
-The application will open automatically in your browser.
+MongoDB should be running before starting the backend.
 
 ---
 
-## Option B — Python Local Server
+## 1️⃣ Clone the Repository
 
-If Python is installed, open a terminal inside the project folder.
+```bash
+git clone https://github.com/ainulhaqsde/Project-LOOP.git
+```
+
+Then:
+
+```bash
+cd Project-LOOP
+```
+
+---
+
+## 2️⃣ Run the Backend
+
+Open a terminal and run:
+
+```bash
+cd BackEnd
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+The backend runs on:
+
+```text
+http://localhost:5000
+```
+
+A successful startup should confirm that:
+
+```text
+Server is running
+MongoDB connected successfully
+```
+
+---
+
+## 3️⃣ Run the Frontend
+
+Open another terminal.
 
 Run:
 
 ```bash
-python -m http.server 5500
+cd FrontEnd
 ```
 
-Then open:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start Vite:
+
+```bash
+npm run dev
+```
+
+The frontend runs on:
 
 ```text
-http://localhost:5500
+http://localhost:5173
 ```
 
-in your browser.
+Open this address in your browser.
+
+> ⚠️ Do not use VS Code Live Server or port `5500` for this project. The React/Vite frontend should be started using `npm run dev`.
 
 ---
 
-# 🔌 Backend API Integration
+# 🔐 Authentication
 
-LOOP includes a central API client:
+Project LOOP provides authentication functionality including:
+
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Authenticated Application Access
+
+Authentication is handled through the backend rather than exposing sensitive authentication logic in the frontend.
+
+---
+
+# 💬 Customer Feedback Management
+
+Users can add and manage customer feedback.
+
+Feedback can include information such as:
+
+- Customer Name
+- Customer Email
+- Feedback Source
+- Customer Feedback Message
+
+Submitted feedback is stored in **MongoDB**.
+
+The stored feedback is then used by:
+
+- Feedback Library
+- Dashboard
+- Sentiment Analysis
+- Customer Theme Analysis
+- Analytics
+- Ask LOOP AI
+
+---
+
+# 📊 Analytics Dashboard
+
+Project LOOP provides a modern feedback intelligence dashboard.
+
+The dashboard includes:
+
+- Total Feedback
+- Positive Feedback
+- Negative Feedback
+- Neutral Feedback
+- Sentiment Distribution
+- Sentiment Breakdown
+- Customer Themes
+- Recent Feedback
+- LOOP Intelligence
+- Quick Actions
+
+This allows users to understand overall customer sentiment without manually analyzing every feedback entry.
+
+---
+
+# 😊 Sentiment Analysis
+
+Project LOOP analyzes customer feedback and categorizes sentiment into:
 
 ```text
-assets/api.js
+Positive
+Negative
+Neutral
 ```
 
-This keeps backend communication in one place and makes future backend integration easier.
+Sentiment results are used throughout the analytics dashboard to provide a quick understanding of overall customer satisfaction.
 
 ---
 
-## Suggested API Routes
+# 🧩 Customer Themes
 
-### 🔐 Authentication
+Project LOOP identifies recurring themes and patterns from customer feedback.
 
-```http
-POST /api/auth/login
-POST /api/auth/logout
-GET  /api/me
-```
-
----
-
-### 💬 Feedback
-
-```http
-GET   /api/feedback
-POST  /api/feedback
-POST  /api/feedback/import
-PATCH /api/feedback/:id
-```
-
----
-
-### 📊 Themes & Trends
-
-```http
-GET /api/themes
-GET /api/themes/trends
-```
-
----
-
-### 🤖 Ask LOOP
-
-```http
-POST /api/insights/ask
-```
-
----
-
-### 📄 Reports
-
-```http
-POST /api/reports
-GET  /api/reports
-GET  /api/reports/:id
-```
-
----
-
-### 👥 Workspace
-
-```http
-GET   /api/workspace
-GET   /api/workspace/members
-POST  /api/workspace/members
-PATCH /api/workspace/members/:id
-```
-
----
-
-# 🌐 API Base URL
-
-The API URL can be configured from:
+Themes can help identify areas such as:
 
 ```text
-Settings → API connection
+Customer Support
+Website Performance
+User Experience
+Product Features
+Login Experience
+Search
+Customer Satisfaction
 ```
 
-or directly through browser local storage:
-
-```js
-localStorage.setItem(
-  "LOOP_API_BASE_URL",
-  "http://localhost:3000/api"
-);
-```
-
-Example backend API:
-
-```text
-http://localhost:3000/api
-```
+Theme analysis helps teams understand which topics appear repeatedly across customer feedback.
 
 ---
 
-# 🏗️ Recommended Architecture
+# 🤖 Ask LOOP AI
 
-The browser should communicate only with the application's own backend API.
+**Ask LOOP** is the AI-powered intelligence feature of Project LOOP.
 
-Recommended flow:
+It allows users to ask questions about their customer feedback.
+
+Example questions:
 
 ```text
-User
-  ↓
-LOOP Frontend
-  ↓
-Backend API
-  ↓
-Authentication & Authorization
-  ↓
-Workspace Validation
-  ↓
-Database / AI Services
-  ↓
-Clean JSON Response
-  ↓
-LOOP Frontend
+Summarize all customer feedback.
 ```
+
+```text
+What are the main customer complaints?
+```
+
+```text
+What are customers most satisfied with?
+```
+
+```text
+What are the top recurring themes?
+```
+
+```text
+Give me 3 recommendations to improve customer satisfaction.
+```
+
+Ask LOOP uses available customer feedback context to generate useful business intelligence.
+
+It can help identify:
+
+- Major customer concerns
+- Customer satisfaction areas
+- Recurring themes
+- Product issues
+- Service issues
+- Improvement opportunities
+- Recommended business actions
 
 ---
 
-## Backend Responsibilities
+# 🧠 LOOP Intelligence
 
-The backend should:
+LOOP Intelligence helps transform customer feedback into understandable insights.
 
-1. Authenticate the user.
-2. Verify the user's role.
-3. Scope every request to the authenticated `workspaceId`.
-4. Communicate with PostgreSQL through Prisma.
-5. Call the AI provider only from the server.
-6. Perform retrieval before answering Ask LOOP questions.
-7. Return clean JSON responses to the frontend.
+Instead of displaying only raw feedback, the platform helps users understand:
+
+```text
+What happened?
+Why does it matter?
+What are customers saying?
+What should we improve?
+```
+
+This helps convert customer feedback into actionable information.
 
 ---
 
 # 🔐 Security
 
-Never expose secrets inside frontend code.
+Project LOOP follows important security practices.
 
-Do **not** place values such as:
+- JWT-based authentication
+- Protected application routes
+- Password handling through the backend
+- Sensitive credentials stored in environment variables
+- `.env` excluded from Git
+- Gemini API integration handled through the backend
+- MongoDB connection details kept outside frontend code
+
+Never place secrets directly inside frontend source files.
+
+Sensitive information such as:
 
 ```text
-ANTHROPIC_API_KEY
-DATABASE_URL
+GEMINI_API_KEY
 JWT_SECRET
+MONGO_URI
 DATABASE_PASSWORD
-AUTH_SECRET
 ```
 
-inside:
-
-```text
-HTML
-CSS
-JavaScript frontend files
-```
-
-Sensitive credentials must always stay on the backend.
+must never be committed to a public GitHub repository.
 
 ---
 
-# 👥 User Roles
+# 📱 Responsive Design
 
-LOOP supports three workspace roles:
+Project LOOP provides a responsive user interface designed for:
 
-| Role           | Purpose                                   |
-| -------------- | ----------------------------------------- |
-| 👑 **Admin**   | Full workspace and user management        |
-| 📊 **Analyst** | Feedback analysis, insights and reporting |
-| 👁️ **Viewer** | Read-only or limited workspace access     |
+- 🖥️ Desktop
+- 💻 Laptop
+- 📱 Tablet
+- 📲 Mobile
 
-> Frontend role-aware UI improves the experience, but real permissions must always be enforced by the backend.
+Responsive design is implemented across:
 
----
-
-# 💬 Feedback Inbox
-
-The feedback workspace is designed to support:
-
-* Customer feedback viewing
-* Search
-* Filtering
-* Status management
-* Feedback organization
-* Pagination-ready workflows
-* Feedback ingestion
-* CSV import workflows
+- Landing Page
+- Navigation
+- Registration
+- Login
+- Dashboard
+- Feedback Pages
+- Analytics
+- Customer Themes
+- Ask LOOP AI
 
 ---
 
-# 📊 Dashboard Analytics
+# 🧪 Tested Project Flow
 
-The dashboard can surface high-level feedback intelligence such as:
+The main Project LOOP workflow has been tested.
 
-* Total feedback
-* Feedback volume
-* Sentiment distribution
-* Recent activity
-* Theme performance
-* Customer experience trends
-* Key business insights
-
----
-
-# 🧩 Themes & Trends
-
-LOOP provides interfaces for identifying recurring themes inside customer feedback.
-
-Examples may include:
-
-```text
-Product Quality
-Customer Support
-Pricing
-Delivery
-Performance
-User Experience
-Feature Requests
-```
-
-Theme trends help teams understand which topics are becoming more or less important over time.
+- [x] User Registration
+- [x] User Login
+- [x] User Logout
+- [x] JWT Authentication
+- [x] Protected Routes
+- [x] Dashboard
+- [x] Add Customer Feedback
+- [x] MongoDB Feedback Persistence
+- [x] Positive Sentiment
+- [x] Negative Sentiment
+- [x] Neutral Sentiment
+- [x] Customer Theme Detection
+- [x] Analytics Dashboard
+- [x] Ask LOOP AI
+- [x] Gemini AI Integration
+- [x] AI Feedback Summary
+- [x] AI Recommendations
+- [x] Responsive Interface
+- [x] Production Frontend Build
 
 ---
 
-# 🤖 Ask LOOP
+# 🏗️ Production Build
 
-**Ask LOOP** provides an AI-powered question-and-answer interface for customer feedback intelligence.
-
-Example questions:
-
-```text
-What are customers complaining about the most?
-```
-
-```text
-What are the biggest product issues this month?
-```
-
-```text
-Which feedback themes are increasing?
-```
-
-```text
-What do customers like most about the product?
-```
-
-```text
-Summarize the top customer concerns.
-```
-
-For production use, Ask LOOP should use **grounded retrieval** so answers are based on real feedback records rather than unsupported AI responses.
-
----
-
-# 📄 Voice-of-Customer Reports
-
-LOOP includes a reporting interface designed for creating **Voice-of-Customer (VoC)** reports.
-
-Reports can summarize:
-
-* Customer sentiment
-* Top themes
-* Key complaints
-* Positive feedback
-* Emerging trends
-* Important customer requests
-* Recommended actions
-
----
-
-# 🗃️ Development Data
-
-The file:
-
-```text
-assets/data.js
-```
-
-contains a small **seed-style frontend dataset**.
-
-It exists so that the UI remains populated while backend development is still in progress.
-
-It is **not intended to replace the production database**.
-
-When backend integration is complete, page-level:
-
-```js
-LOOP_DATA
-```
-
-reads should be replaced with API calls.
-
-The user interface can remain unchanged.
-
----
-
-# 🌿 Git Workflow
-
-Create a frontend development branch:
+To create the frontend production build:
 
 ```bash
-git checkout -b feat/loop-frontend
+cd FrontEnd
 ```
 
-Add all files:
+Then:
 
 ```bash
-git add .
+npm run build
 ```
 
-Commit the changes:
+Vite creates the optimized production files inside:
 
-```bash
-git commit -m "feat: build LOOP customer intelligence frontend"
+```text
+FrontEnd/dist/
 ```
-
-Push the branch:
-
-```bash
-git push -u origin feat/loop-frontend
-```
-
-Then create a **Pull Request** into your team's main branch.
 
 ---
 
-# ✅ Before Final Submission
+# 🌐 Deployment
 
-* [ ] Connect all backend API endpoints.
-* [ ] Test login and logout.
-* [ ] Test Admin permissions.
-* [ ] Test Analyst permissions.
-* [ ] Test Viewer permissions.
-* [ ] Enforce permissions from the backend.
-* [ ] Test feedback creation.
-* [ ] Test feedback filtering.
-* [ ] Test feedback status updates.
-* [ ] Test CSV validation.
-* [ ] Test feedback pagination.
-* [ ] Test theme clustering.
-* [ ] Test trend analytics.
-* [ ] Test Ask LOOP.
-* [ ] Verify Ask LOOP grounding.
-* [ ] Verify AI source citations.
-* [ ] Test Voice-of-Customer report generation.
-* [ ] Test report export.
-* [ ] Test loading states.
-* [ ] Test empty states.
-* [ ] Test error states.
-* [ ] Run accessibility checks.
-* [ ] Test mobile responsiveness.
-* [ ] Test tablet responsiveness.
-* [ ] Test desktop responsiveness.
-* [ ] Remove unused development seed-data fallbacks.
-* [ ] Deploy the frontend.
-* [ ] Deploy the backend.
-* [ ] Add project screenshots.
-* [ ] Prepare the demo video.
-* [ ] Complete final documentation.
+Project LOOP production deployment consists of three main parts:
+
+```text
+MongoDB Database
+       ↓
+Node.js / Express Backend
+       ↓
+React / Vite Frontend
+```
+
+Production environment variables must be configured securely through the selected hosting platform.
+
+### Live Application
+
+```text
+Coming Soon
+```
+
+The live deployment URL will be added after deployment.
 
 ---
 
-# 👨‍💻 Team Members
+# 📌 GitHub Topics
 
-LOOP was developed collaboratively by a team of **4 members**.
+Recommended GitHub repository topics:
 
-| #   | Team Member              | Role                    |
-| --- | ------------------------ | ----------------------- |
-| 1️⃣ | **Nitin**            | Developer / Team Member |
-| 2️⃣ | **Ainul Haq** | Developer / Team Member |
-| 3️⃣ | **[Team Member 3 Name]** | Developer / Team Member |
-| 4️⃣ | **[Team Member 4 Name]** | Developer / Team Member |
-
----
-
-## 🤝 Team Contribution
-
-The team collaborated across:
-
-* 🎨 UI/UX Development
-* 💻 Frontend Development
-* ⚙️ Backend Integration
-* 🗃️ Database Development
-* 🤖 AI Integration
-* 🔐 Authentication & Authorization
-* 📊 Analytics
-* 🧪 Testing & Debugging
-* 📚 Documentation
+```text
+ai
+customer-feedback
+sentiment-analysis
+full-stack
+analytics-dashboard
+react
+vite
+nodejs
+express
+mongodb
+gemini-ai
+jwt
+```
 
 ---
 
 # 🚀 Future Improvements
 
-Potential future enhancements include:
+Potential future improvements include:
 
-* Real-time feedback updates
-* Advanced analytics
-* More detailed sentiment analysis
-* Automated theme discovery
-* AI-generated executive summaries
-* Exportable PDF reports
-* Email report delivery
-* Multi-workspace support
-* Advanced user permissions
-* Notification system
-* Better accessibility
-* Automated testing
-* CI/CD integration
-* Production monitoring
+- CSV Feedback Import
+- Advanced Feedback Search & Filters
+- Advanced Role-Based Access
+- Voice-of-Customer Report Generation
+- Exportable Reports
+- Advanced Trend Detection
+- Real-Time Feedback Updates
+- Advanced AI Insights
+- Automated Testing
+- CI/CD Integration
+- Production Monitoring
+
+---
+
+# 📋 Project Details
+
+**Project Name:** `Project LOOP`
+
+**Full Name:** `Project LOOP — AI Customer Feedback Intelligence Platform`
+
+**GitHub Repository:** `Project-LOOP`
+
+**Deployment Slug:** `project-loop`
+
+**Short Description:**
+
+> AI-powered customer feedback intelligence platform that analyzes feedback, detects sentiment and themes, tracks customer insights, and generates actionable recommendations.
+
+---
+
+# 🎯 Project Goal
+
+The goal of Project LOOP is to help teams move from **raw customer feedback to actionable intelligence**.
+
+```text
+Listen → Analyze → Understand → Improve
+```
 
 ---
 
 # ⭐ Support
 
-If you find **LOOP** useful, consider giving the repository a ⭐.
+If you find **Project LOOP** useful, consider giving the repository a ⭐.
 
 Feedback, suggestions, and contributions are welcome.
 
 ---
 
-### 💙 Built by Team LOOP
+### 🔄 Project LOOP
 
-**Transforming Customer Feedback into Actionable Intelligence.**
+**AI Customer Feedback Intelligence Platform**
 
-🔁 **LOOP — Listen • Organize • Understand • Progress**
+### “Close the loop on customer feedback.”
+
+**Transforming customer feedback into actionable intelligence.**
