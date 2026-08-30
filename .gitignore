@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Secret environment files
+.env
+.env.*
+!.env.sample
+!.env.example
+
+# Production build
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# VS Code / Windows
+.vscode/
+.DS_Store
+Thumbs.db

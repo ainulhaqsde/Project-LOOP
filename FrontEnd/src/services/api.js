@@ -1,4 +1,15 @@
-const API_BASE_URL = "http://localhost:5000";
+// =====================================================
+// API BASE URL
+// =====================================================
+
+// Local development:
+// http://localhost:5000
+//
+// Production:
+// Set VITE_API_BASE_URL in Vercel Environment Variables.
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 // =====================================================
 // CENTRAL API HELPER
@@ -46,7 +57,9 @@ const api = async (endpoint, options = {}) => {
     // -------------------------------------------------
 
     if (response.status === 401) {
-      console.warn("Authentication session expired or is invalid.");
+      console.warn(
+        "Authentication session expired or is invalid."
+      );
 
       localStorage.removeItem("token");
       localStorage.removeItem("user");
