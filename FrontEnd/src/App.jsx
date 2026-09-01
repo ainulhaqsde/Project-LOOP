@@ -27,6 +27,7 @@ import AddFeedbackPage from "./Pages/AddFeedbackPage";
 import EditFeedbackPage from "./Pages/EditFeedbackPage";
 import AskAIPage from "./Pages/AskAI";
 import AnalyticsPage from "./Pages/AnalyticsPage";
+import VoCReportPage from "./Pages/VoCReport";
 
 // =====================================================
 // ADMIN PAGES
@@ -46,6 +47,7 @@ function App() {
       <Navbar />
 
       <Routes>
+
         {/* =================================================
             PUBLIC ROUTES
         ================================================= */}
@@ -105,6 +107,11 @@ function App() {
           <Route
             path="/analytics"
             element={<AnalyticsPage />}
+          />
+
+          <Route
+            path="/voc-report"
+            element={<VoCReportPage />}
           />
 
         </Route>

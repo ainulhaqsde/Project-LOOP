@@ -5,6 +5,7 @@ import Feedback from "../model/feedback.js";
 import {
   analyzeFeedbackWithAI,
   askFeedbackAI,
+  generateVoCReport,
 } from "../services/aiService.js";
 
 import {
@@ -458,6 +459,107 @@ feedbackRoutes.post(
 
 
 // =====================================================
+// GENERATE VOICE OF CUSTOMER REPORT
+// IMPORTANT: KEEP THIS BEFORE /:id
+// =====================================================
+
+feedbackRoutes.post(
+  "/voc-report",
+  authMiddleware,
+  async (req, res) => {
+
+    try {
+
+      console.log(
+        "Voice of Customer report request received."
+      );
+
+
+      // ---------------------------------------------
+      // Get feedback data
+      // ---------------------------------------------
+
+      const feedbacks =
+        await Feedback.find()
+          .sort({
+            createdAt: -1,
+          });
+
+
+      // ---------------------------------------------
+      // Check feedback availability
+      // ---------------------------------------------
+
+      if (
+        !Array.isArray(feedbacks) ||
+        feedbacks.length === 0
+      ) {
+
+        return res.status(200).json({
+
+          success: false,
+
+          message:
+            "There is not enough customer feedback data available to generate a Voice of Customer report.",
+
+          report:
+            "",
+
+        });
+
+      }
+
+
+      // ---------------------------------------------
+      // Generate report with Gemini
+      // ---------------------------------------------
+
+      const report =
+        await generateVoCReport(
+          feedbacks
+        );
+
+
+      // ---------------------------------------------
+      // Send response
+      // ---------------------------------------------
+
+      return res.status(200).json({
+
+        success: true,
+
+        message:
+          "Voice of Customer report generated successfully.",
+
+        report,
+
+      });
+
+    } catch (error) {
+
+      console.error(
+        "VoC report route error:",
+        error
+      );
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message ||
+          "Failed to generate Voice of Customer report.",
+
+      });
+
+    }
+
+  }
+);
+
+
+// =====================================================
 // GET SINGLE FEEDBACK
 // =====================================================
 
@@ -742,4 +844,3 @@ feedbackRoutes.delete(
 export {
   feedbackRoutes,
 };
-

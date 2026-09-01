@@ -92,7 +92,10 @@ const analyzeFeedbackWithAI = async (message) => {
       );
     }
 
-    const cleanMessage = message.trim();
+
+    const cleanMessage =
+      message.trim();
+
 
     if (!cleanMessage) {
       throw new Error(
@@ -171,36 +174,42 @@ Return only the requested structured JSON response.
 
     let response = null;
 
+
     for (
       let attempt = 1;
       attempt <= MAX_RETRIES;
       attempt++
     ) {
-
       try {
 
         console.log(
           `Gemini request attempt ${attempt}/${MAX_RETRIES}...`
         );
 
-        response = await ai.models.generateContent({
 
-          model: "gemini-3.6-flash",
+        response =
+          await ai.models.generateContent({
 
-          contents: prompt,
+            model:
+              "gemini-3.6-flash",
 
-          config: {
-            responseMimeType: "application/json",
+            contents:
+              prompt,
 
-            responseSchema:
-              feedbackAnalysisSchema,
-          },
+            config: {
+              responseMimeType:
+                "application/json",
 
-        });
+              responseSchema:
+                feedbackAnalysisSchema,
+            },
+          });
+
 
         console.log(
           "Gemini response received."
         );
+
 
         break;
 
@@ -208,6 +217,7 @@ Return only the requested structured JSON response.
 
         const errorMessage =
           error?.message || "";
+
 
         console.error(
           `Gemini attempt ${attempt} failed:`
@@ -241,7 +251,8 @@ Return only the requested structured JSON response.
 
 
         const delay =
-          1000 * Math.pow(
+          1000 *
+          Math.pow(
             2,
             attempt - 1
           );
@@ -290,6 +301,7 @@ Return only the requested structured JSON response.
     // =================================================
 
     let analysis;
+
 
     try {
 
@@ -376,7 +388,6 @@ Return only the requested structured JSON response.
         typeof analysis.recommendation === "string"
           ? analysis.recommendation.trim()
           : "",
-
     };
 
 
@@ -411,6 +422,7 @@ Return only the requested structured JSON response.
     console.error(
       "=================================="
     );
+
 
     throw error;
   }
@@ -472,7 +484,8 @@ const askFeedbackAI = async (
       feedbacks.map(
         (feedback, index) => ({
 
-          id: index + 1,
+          id:
+            index + 1,
 
           customerName:
             feedback.customerName ||
@@ -508,7 +521,6 @@ const askFeedbackAI = async (
           recommendation:
             feedback.recommendation ||
             "",
-
         })
       );
 
@@ -616,7 +628,6 @@ Return a concise but useful answer.
 
             contents:
               prompt,
-
           });
 
 
@@ -754,6 +765,328 @@ Return a concise but useful answer.
       "========================================"
     );
 
+
+    throw error;
+  }
+};
+
+
+// =====================================================
+// GENERATE VOICE OF CUSTOMER REPORT
+// =====================================================
+
+const generateVoCReport = async (feedbacks) => {
+
+  try {
+
+    // =================================================
+    // VALIDATE FEEDBACK DATA
+    // =================================================
+
+    if (!Array.isArray(feedbacks)) {
+      throw new Error(
+        "Feedback data must be an array."
+      );
+    }
+
+
+    if (feedbacks.length === 0) {
+      throw new Error(
+        "There is not enough customer feedback to generate a report."
+      );
+    }
+
+
+    // =================================================
+    // PREPARE FEEDBACK DATA
+    // =================================================
+
+    const feedbackData =
+      feedbacks.map(
+        (feedback, index) => ({
+
+          id:
+            index + 1,
+
+          source:
+            feedback.source ||
+            "Unknown",
+
+          message:
+            feedback.message ||
+            "",
+
+          sentiment:
+            feedback.sentiment ||
+            "neutral",
+
+          themes:
+            Array.isArray(
+              feedback.themes
+            )
+              ? feedback.themes
+              : [],
+
+          summary:
+            feedback.summary ||
+            "",
+
+          keyIssue:
+            feedback.keyIssue ||
+            "",
+
+          recommendation:
+            feedback.recommendation ||
+            "",
+        })
+      );
+
+
+    const feedbackJSON =
+      JSON.stringify(
+        feedbackData,
+        null,
+        2
+      );
+
+
+    // =================================================
+    // PROMPT
+    // =================================================
+
+    const prompt = `
+You are the Voice of Customer intelligence analyst for Project LOOP.
+
+Generate a professional Voice of Customer report using ONLY
+the customer feedback data provided below.
+
+CUSTOMER FEEDBACK:
+
+${feedbackJSON}
+
+Create the report using the following sections:
+
+1. EXECUTIVE SUMMARY
+Give a concise overview of what customers are saying.
+
+2. SENTIMENT OVERVIEW
+Explain the overall positive, negative, and neutral sentiment patterns.
+
+3. TOP CUSTOMER THEMES
+Identify the most important recurring themes.
+
+4. KEY CUSTOMER CONCERNS
+Explain the main complaints, problems, or frustrations.
+
+5. POSITIVE CUSTOMER HIGHLIGHTS
+Explain what customers appreciate or are satisfied with.
+
+6. IMPROVEMENT OPPORTUNITIES
+Identify areas where the business could improve.
+
+7. RECOMMENDED ACTIONS
+Provide practical, prioritized business recommendations.
+
+8. FINAL CUSTOMER INSIGHT
+Give a short conclusion describing the overall Voice of Customer.
+
+IMPORTANT RULES:
+
+1. Use ONLY the provided customer feedback.
+
+2. Do not invent facts, statistics,
+   percentages, or customer opinions.
+
+3. Do not claim that a theme is common
+   unless the provided data supports it.
+
+4. Do not mention internal IDs.
+
+5. Keep the report professional
+   and easy to understand.
+
+6. Recommendations must be based
+   on the supplied feedback.
+
+7. Clearly state when the available data
+   is insufficient for a conclusion.
+
+8. Do not include Markdown tables.
+
+9. Use clear section headings
+   and readable paragraphs or bullets.
+`;
+
+
+    // =================================================
+    // GEMINI REQUEST WITH RETRY
+    // =================================================
+
+    console.log(
+      "Generating Voice of Customer report..."
+    );
+
+
+    const MAX_RETRIES = 3;
+
+    let response = null;
+
+
+    for (
+      let attempt = 1;
+      attempt <= MAX_RETRIES;
+      attempt++
+    ) {
+
+      try {
+
+        console.log(
+          `VoC report attempt ${attempt}/${MAX_RETRIES}...`
+        );
+
+
+        response =
+          await ai.models.generateContent({
+
+            model:
+              "gemini-3.6-flash",
+
+            contents:
+              prompt,
+          });
+
+
+        console.log(
+          "Voice of Customer report received."
+        );
+
+
+        break;
+
+      } catch (error) {
+
+        const errorMessage =
+          error?.message || "";
+
+
+        console.error(
+          `VoC report attempt ${attempt} failed:`
+        );
+
+        console.error(
+          errorMessage
+        );
+
+
+        const isTemporaryError =
+          errorMessage.includes("503") ||
+          errorMessage.includes("UNAVAILABLE") ||
+          errorMessage.includes("overloaded") ||
+          errorMessage.includes("429") ||
+          errorMessage.includes(
+            "RESOURCE_EXHAUSTED"
+          );
+
+
+        if (!isTemporaryError) {
+          throw error;
+        }
+
+
+        if (
+          attempt === MAX_RETRIES
+        ) {
+
+          throw new Error(
+            "Gemini AI is temporarily unavailable. Please try again in a moment."
+          );
+
+        }
+
+
+        const delay =
+          1000 *
+          Math.pow(
+            2,
+            attempt - 1
+          );
+
+
+        console.log(
+          `Retrying VoC report in ${delay}ms...`
+        );
+
+
+        await new Promise(
+          (resolve) =>
+            setTimeout(
+              resolve,
+              delay
+            )
+        );
+      }
+    }
+
+
+    // =================================================
+    // VALIDATE RESPONSE
+    // =================================================
+
+    if (!response) {
+
+      throw new Error(
+        "Gemini did not return a Voice of Customer report."
+      );
+
+    }
+
+
+    const report =
+      response.text;
+
+
+    if (!report) {
+
+      throw new Error(
+        "Gemini returned an empty Voice of Customer report."
+      );
+
+    }
+
+
+    const cleanReport =
+      report.trim();
+
+
+    console.log(
+      "Voice of Customer report generated successfully."
+    );
+
+
+    return cleanReport;
+
+
+  } catch (error) {
+
+    console.error(
+      "========== VOC REPORT ERROR =========="
+    );
+
+    console.error(
+      "Message:",
+      error.message
+    );
+
+    console.error(
+      "Full Error:",
+      error
+    );
+
+    console.error(
+      "======================================"
+    );
+
+
     throw error;
   }
 };
@@ -766,4 +1099,5 @@ Return a concise but useful answer.
 export {
   analyzeFeedbackWithAI,
   askFeedbackAI,
+  generateVoCReport,
 };
