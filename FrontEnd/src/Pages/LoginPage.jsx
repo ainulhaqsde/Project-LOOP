@@ -4,6 +4,8 @@ import {
   useNavigate,
 } from "react-router-dom";
 
+import { FiEye, FiEyeOff } from "react-icons/fi";
+
 import api from "../services/api";
 
 
@@ -22,6 +24,9 @@ function LoginPage() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // Show / Hide Password
+  const [showPassword, setShowPassword] = useState(false);
 
 
   // =====================================================
@@ -263,17 +268,45 @@ function LoginPage() {
                 Password
               </label>
 
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                required
-                autoComplete="current-password"
-                className="w-full rounded-lg border border-gray-700 bg-gray-950 px-4 py-3.5 text-white outline-none transition placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
+              <div className="relative">
+
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  required
+                  autoComplete="current-password"
+                  className="w-full rounded-lg border border-gray-700 bg-gray-950 px-4 py-3.5 pr-12 text-white outline-none transition placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                />
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    setShowPassword((previousValue) => !previousValue)
+                  }
+                  aria-label={
+                    showPassword
+                      ? "Hide password"
+                      : "Show password"
+                  }
+                  title={
+                    showPassword
+                      ? "Hide password"
+                      : "Show password"
+                  }
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 transition hover:text-blue-400 focus:outline-none"
+                >
+                  {showPassword ? (
+                    <FiEyeOff size={20} />
+                  ) : (
+                    <FiEye size={20} />
+                  )}
+                </button>
+
+              </div>
 
             </div>
 
