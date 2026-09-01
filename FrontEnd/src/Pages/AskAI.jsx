@@ -1,6 +1,6 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import api from "../services/api";
 
 function AskAI() {
@@ -400,9 +400,61 @@ function AskAI() {
                 AI Analysis
               </p>
 
-              <p className="whitespace-pre-wrap text-sm leading-7 text-gray-300 sm:text-base">
-                {answer}
-              </p>
+              <div className="text-sm leading-7 text-gray-300 sm:text-base">
+  <ReactMarkdown
+    components={{
+      h1: ({ children }) => (
+        <h1 className="mb-4 mt-6 text-2xl font-bold text-white">
+          {children}
+        </h1>
+      ),
+
+      h2: ({ children }) => (
+        <h2 className="mb-3 mt-6 text-xl font-semibold text-blue-300">
+          {children}
+        </h2>
+      ),
+
+      h3: ({ children }) => (
+        <h3 className="mb-3 mt-6 text-lg font-semibold text-blue-300">
+          {children}
+        </h3>
+      ),
+
+      p: ({ children }) => (
+        <p className="mb-4 leading-7 text-gray-300">
+          {children}
+        </p>
+      ),
+
+      strong: ({ children }) => (
+        <strong className="font-semibold text-white">
+          {children}
+        </strong>
+      ),
+
+      ul: ({ children }) => (
+        <ul className="mb-5 ml-6 list-disc space-y-2 text-gray-300">
+          {children}
+        </ul>
+      ),
+
+      ol: ({ children }) => (
+        <ol className="mb-5 ml-6 list-decimal space-y-2 text-gray-300">
+          {children}
+        </ol>
+      ),
+
+      li: ({ children }) => (
+        <li className="pl-1 leading-7">
+          {children}
+        </li>
+      ),
+    }}
+  >
+    {answer}
+  </ReactMarkdown>
+</div>
 
             </div>
 
@@ -513,4 +565,3 @@ function AskAI() {
 }
 
 export default AskAI;
-
