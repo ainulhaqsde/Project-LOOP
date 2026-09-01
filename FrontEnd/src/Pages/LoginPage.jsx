@@ -328,12 +328,12 @@ function LoginPage() {
 
               </label>
 
-              <button
-                type="button"
-                className="text-blue-400 transition hover:text-blue-300"
+              <Link
+              to="/forgot-password"
+              className="text-blue-400 transition hover:text-blue-300"
               >
-                Forgot password?
-              </button>
+              Forgot password?
+              </Link>
 
             </div>
 

@@ -1,7 +1,9 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import { User } from "../model/user.js";
 import { z } from "zod";
+import { sendPasswordResetEmail } from "../services/emailService.js";
 
 
 // =====================================================
@@ -13,16 +15,16 @@ const register_controller = async (req, res) => {
   const user_schema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.email("Invalid email address"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
-    confirmPassword: z.string().min(6, "Confirm password must be at least 6 characters")
+    password: z
+      .string()
+      .min(6, "Password must be at least 6 characters"),
+    confirmPassword: z
+      .string()
+      .min(6, "Confirm password must be at least 6 characters"),
   });
 
 
   try {
-
-    // =================================================
-    // VALIDATE REQUEST BODY
-    // =================================================
 
     const isValid = user_schema.safeParse(req.body);
 
@@ -31,7 +33,9 @@ const register_controller = async (req, res) => {
 
       return res.status(400).json({
         success: false,
-        message: isValid.error.issues[0]?.message || "Invalid input"
+        message:
+          isValid.error.issues[0]?.message ||
+          "Invalid input",
       });
 
     }
@@ -41,30 +45,22 @@ const register_controller = async (req, res) => {
       name,
       email,
       password,
-      confirmPassword
+      confirmPassword,
     } = isValid.data;
 
-
-    // =================================================
-    // CHECK PASSWORDS
-    // =================================================
 
     if (password !== confirmPassword) {
 
       return res.status(400).json({
         success: false,
-        message: "Passwords do not match"
+        message: "Passwords do not match",
       });
 
     }
 
 
-    // =================================================
-    // CHECK EXISTING USER
-    // =================================================
-
     const existingUser = await User.findOne({
-      email
+      email,
     });
 
 
@@ -72,15 +68,11 @@ const register_controller = async (req, res) => {
 
       return res.status(400).json({
         success: false,
-        message: "User already exists"
+        message: "User already exists",
       });
 
     }
 
-
-    // =================================================
-    // HASH PASSWORD
-    // =================================================
 
     const hashedPassword = await bcrypt.hash(
       password,
@@ -88,24 +80,12 @@ const register_controller = async (req, res) => {
     );
 
 
-    // =================================================
-    // CREATE USER
-    // =================================================
-
     const user = await User.create({
-
       name,
-
       email,
-
-      password: hashedPassword
-
+      password: hashedPassword,
     });
 
-
-    // =================================================
-    // SUCCESS RESPONSE
-    // =================================================
 
     return res.status(201).json({
 
@@ -114,16 +94,11 @@ const register_controller = async (req, res) => {
       message: "User registered successfully",
 
       user: {
-
         id: user._id,
-
         name: user.name,
-
         email: user.email,
-
-        role: user.role
-
-      }
+        role: user.role,
+      },
 
     });
 
@@ -137,13 +112,9 @@ const register_controller = async (req, res) => {
 
 
     return res.status(500).json({
-
       success: false,
-
       message: "Server error",
-
-      error: error.message
-
+      error: error.message,
     });
 
   }
@@ -164,16 +135,12 @@ const login_controller = async (req, res) => {
     password: z.string().min(
       1,
       "Password is required"
-    )
+    ),
 
   });
 
 
   try {
-
-    // =================================================
-    // VALIDATE REQUEST BODY
-    // =================================================
 
     const isValid = login_schema.safeParse(
       req.body
@@ -188,7 +155,7 @@ const login_controller = async (req, res) => {
 
         message:
           isValid.error.issues[0]?.message ||
-          "Invalid input"
+          "Invalid input",
 
       });
 
@@ -197,16 +164,12 @@ const login_controller = async (req, res) => {
 
     const {
       email,
-      password
+      password,
     } = isValid.data;
 
 
-    // =================================================
-    // FIND USER
-    // =================================================
-
     const user = await User.findOne({
-      email
+      email,
     });
 
 
@@ -216,16 +179,12 @@ const login_controller = async (req, res) => {
 
         success: false,
 
-        message: "Invalid email or password"
+        message: "Invalid email or password",
 
       });
 
     }
 
-
-    // =================================================
-    // CHECK PASSWORD
-    // =================================================
 
     const isPasswordCorrect =
       await bcrypt.compare(
@@ -240,16 +199,12 @@ const login_controller = async (req, res) => {
 
         success: false,
 
-        message: "Invalid email or password"
+        message: "Invalid email or password",
 
       });
 
     }
 
-
-    // =================================================
-    // CHECK JWT SECRET
-    // =================================================
 
     if (!process.env.JWT_SECRET) {
 
@@ -257,46 +212,34 @@ const login_controller = async (req, res) => {
         "JWT_SECRET is missing from .env"
       );
 
+
       return res.status(500).json({
 
         success: false,
 
         message:
-          "Server authentication configuration error"
+          "Server authentication configuration error",
 
       });
 
     }
 
 
-    // =================================================
-    // CREATE JWT
-    // =================================================
-
     const token = jwt.sign(
 
       {
-
         userId: user._id.toString(),
-
-        role: user.role
-
+        role: user.role,
       },
 
       process.env.JWT_SECRET,
 
       {
-
-        expiresIn: "7d"
-
+        expiresIn: "7d",
       }
 
     );
 
-
-    // =================================================
-    // SEND RESPONSE
-    // =================================================
 
     return res.status(200).json({
 
@@ -307,16 +250,11 @@ const login_controller = async (req, res) => {
       token,
 
       user: {
-
         id: user._id,
-
         name: user.name,
-
         email: user.email,
-
-        role: user.role
-
-      }
+        role: user.role,
+      },
 
     });
 
@@ -335,7 +273,330 @@ const login_controller = async (req, res) => {
 
       message: "Server error",
 
-      error: error.message
+      error: error.message,
+
+    });
+
+  }
+
+};
+
+
+// =====================================================
+// FORGOT PASSWORD CONTROLLER
+// =====================================================
+
+const forgot_password_controller = async (req, res) => {
+
+  const forgotPasswordSchema = z.object({
+    email: z.email("Invalid email address"),
+  });
+
+
+  try {
+
+    const isValid =
+      forgotPasswordSchema.safeParse(
+        req.body
+      );
+
+
+    if (!isValid.success) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          isValid.error.issues[0]?.message ||
+          "Invalid email address",
+
+      });
+
+    }
+
+
+    const { email } = isValid.data;
+
+
+    const user = await User.findOne({
+      email,
+    });
+
+
+    // Do not reveal whether the account exists.
+    if (!user) {
+
+      return res.status(200).json({
+
+        success: true,
+
+        message:
+          "If an account exists for that email, a password reset link has been sent.",
+
+      });
+
+    }
+
+
+    // Generate secure random reset token.
+    const resetToken = crypto
+      .randomBytes(32)
+      .toString("hex");
+
+
+    // Store only the hashed version in MongoDB.
+    const hashedResetToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+
+
+    user.passwordResetToken =
+      hashedResetToken;
+
+    user.passwordResetExpires =
+      Date.now() + 15 * 60 * 1000;
+
+
+    await user.save();
+
+
+    // Create frontend reset URL.
+    const frontendUrl =
+      process.env.FRONTEND_URL ||
+      "http://localhost:5173";
+
+
+    const resetUrl =
+      `${frontendUrl}/reset-password/${resetToken}`;
+
+
+    // Send reset link through Resend.
+    try {
+
+      await sendPasswordResetEmail(
+        user.email,
+        resetUrl
+      );
+
+    } catch (emailError) {
+
+      console.error(
+        "Password reset email error:",
+        emailError
+      );
+
+
+      // Remove the reset token if email delivery fails.
+      user.passwordResetToken = null;
+      user.passwordResetExpires = null;
+
+      await user.save();
+
+
+      return res.status(500).json({
+
+        success: false,
+
+        message:
+          "Unable to send password reset email. Please try again later.",
+
+      });
+
+    }
+
+
+    return res.status(200).json({
+
+      success: true,
+
+      message:
+        "If an account exists for that email, a password reset link has been sent.",
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Forgot password error:",
+      error
+    );
+
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        "Unable to process password reset request.",
+
+    });
+
+  }
+
+};
+
+
+// =====================================================
+// RESET PASSWORD CONTROLLER
+// =====================================================
+
+const reset_password_controller = async (req, res) => {
+
+  const resetPasswordSchema = z.object({
+
+    password: z
+      .string()
+      .min(
+        6,
+        "Password must be at least 6 characters"
+      ),
+
+    confirmPassword: z
+      .string()
+      .min(
+        6,
+        "Confirm password must be at least 6 characters"
+      ),
+
+  });
+
+
+  try {
+
+    const isValid =
+      resetPasswordSchema.safeParse(
+        req.body
+      );
+
+
+    if (!isValid.success) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          isValid.error.issues[0]?.message ||
+          "Invalid password",
+
+      });
+
+    }
+
+
+    const {
+      password,
+      confirmPassword,
+    } = isValid.data;
+
+
+    if (password !== confirmPassword) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "Passwords do not match",
+
+      });
+
+    }
+
+
+    const { token } = req.params;
+
+
+    if (!token) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "Password reset token is required.",
+
+      });
+
+    }
+
+
+    const hashedResetToken = crypto
+      .createHash("sha256")
+      .update(token)
+      .digest("hex");
+
+
+    const user = await User.findOne({
+
+      passwordResetToken:
+        hashedResetToken,
+
+      passwordResetExpires: {
+        $gt: Date.now(),
+      },
+
+    });
+
+
+    if (!user) {
+
+      return res.status(400).json({
+
+        success: false,
+
+        message:
+          "Password reset link is invalid or has expired.",
+
+      });
+
+    }
+
+
+    const hashedPassword =
+      await bcrypt.hash(
+        password,
+        10
+      );
+
+
+    user.password = hashedPassword;
+
+    user.passwordResetToken = null;
+
+    user.passwordResetExpires = null;
+
+
+    await user.save();
+
+
+    return res.status(200).json({
+
+      success: true,
+
+      message:
+        "Password reset successfully. You can now sign in with your new password.",
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Reset password error:",
+      error
+    );
+
+
+    return res.status(500).json({
+
+      success: false,
+
+      message:
+        "Unable to reset password.",
 
     });
 
@@ -350,6 +611,7 @@ const login_controller = async (req, res) => {
 
 export {
   register_controller,
-  login_controller
+  login_controller,
+  forgot_password_controller,
+  reset_password_controller,
 };
-

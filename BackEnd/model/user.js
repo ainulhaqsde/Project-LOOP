@@ -29,6 +29,20 @@ const userSchema = new mongoose.Schema(
       enum: ["admin", "manager", "member"],
       default: "member",
     },
+
+    // =====================================================
+    // PASSWORD RESET
+    // =====================================================
+
+    passwordResetToken: {
+      type: String,
+      default: null,
+    },
+
+    passwordResetExpires: {
+      type: Date,
+      default: null,
+    },
   },
   {
     timestamps: true,

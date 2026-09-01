@@ -16,6 +16,8 @@ import WelcomePage from "./Pages/WelcomePage";
 import InfoPage from "./Pages/InfoPage";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
+import ForgotPasswordPage from "./Pages/ForgotPassword";
+import ResetPasswordPage from "./Pages/ResetPassword";
 
 // =====================================================
 // PROTECTED PAGES
@@ -70,6 +72,16 @@ function App() {
         <Route
           path="/register"
           element={<RegisterPage />}
+        />
+
+        <Route
+          path="/forgot-password"
+          element={<ForgotPasswordPage />}
+        />
+
+        <Route
+          path="/reset-password/:token"
+          element={<ResetPasswordPage />}
         />
 
 
