@@ -14,7 +14,7 @@
 
 **Project LOOP** is a full-stack, AI-powered **Customer Feedback Intelligence Platform** designed to help teams collect, organize, analyze, and understand customer feedback.
 
-It combines **feedback management, sentiment analysis, recurring theme detection, interactive analytics, and AI-powered Q&A** to transform raw customer feedback into meaningful and actionable business insights.
+It combines **feedback management, sentiment analysis, recurring theme detection, interactive analytics, AI-powered Q&A, Voice-of-Customer reporting, and secure authentication** to transform raw customer feedback into meaningful and actionable business insights.
 
 > **Close the loop on customer feedback.**
 
@@ -34,24 +34,32 @@ It combines **feedback management, sentiment analysis, recurring theme detection
 
 ## ✨ Features
 
-* 🔐 User Registration & Login
-* 🛡️ JWT-based Authentication
-* 🔒 Protected Application Routes
-* 💬 Customer Feedback Collection
-* 🗃️ MongoDB Data Persistence
-* 📚 Centralized Feedback Library
-* 😊 Positive, Negative & Neutral Sentiment Analysis
-* 🧩 Customer Theme Detection
-* 📊 Interactive Analytics Dashboard
-* 📈 Sentiment Distribution
-* 🕒 Recent Feedback Insights
-* 🧠 LOOP Intelligence
-* 🤖 Ask LOOP AI
-* 💡 AI-Generated Recommendations
-* 🔎 Feedback-Grounded AI Q&A
-* 📱 Responsive User Interface
-* ☁️ Production Cloud Deployment
-* 🌐 Frontend & Backend API Integration
+- 🔐 User Registration & Login
+- 👁️ Show / Hide Password
+- 🔑 Forgot Password
+- 📧 Email-Based Password Reset
+- ⏱️ Secure Time-Limited Reset Links
+- 🛡️ JWT-Based Authentication
+- 🔒 Protected Application Routes
+- 💬 Customer Feedback Collection
+- 🗃️ MongoDB Data Persistence
+- 📚 Centralized Feedback Library
+- 😊 Positive, Negative & Neutral Sentiment Analysis
+- 🧩 Customer Theme Detection
+- 📊 Interactive Analytics Dashboard
+- 📈 Sentiment Distribution
+- 🕒 Recent Feedback Insights
+- 🧠 LOOP Intelligence
+- 🤖 Ask LOOP AI
+- 💡 AI-Generated Recommendations
+- 🔎 Feedback-Grounded AI Q&A
+- 📑 Voice-of-Customer Report Generation
+- 🖨️ Printable / Save-as-PDF VoC Reports
+- 📝 AI Response Markdown Rendering
+- 📱 Responsive User Interface
+- ☁️ Production Cloud Deployment
+- 🌐 Frontend & Backend API Integration
+- ✉️ Resend Email Integration
 
 ---
 
@@ -59,17 +67,17 @@ It combines **feedback management, sentiment analysis, recurring theme detection
 
 Businesses receive large amounts of customer feedback, but manually reviewing every feedback entry can become difficult and time-consuming.
 
-**Project LOOP** helps transform this raw feedback into useful business intelligence.
+**Project LOOP** helps transform raw feedback into useful business intelligence.
 
 Instead of simply storing customer feedback, LOOP helps users understand:
 
-* What customers are saying
-* Whether feedback is positive, negative, or neutral
-* What customers are complaining about
-* What customers are satisfied with
-* Which topics appear repeatedly
-* Which areas require improvement
-* What actions could improve customer satisfaction
+- What customers are saying
+- Whether feedback is positive, negative, or neutral
+- What customers are complaining about
+- What customers are satisfied with
+- Which topics appear repeatedly
+- Which areas require improvement
+- What actions could improve customer satisfaction
 
 The platform combines traditional analytics with **AI-powered feedback intelligence** to provide a clearer understanding of customer experiences.
 
@@ -90,16 +98,18 @@ Sentiment & Theme Analysis
         ↓
 Google Gemini AI
         ↓
-Dashboard + Ask LOOP AI
+Dashboard + Ask LOOP AI + VoC Reports
         ↓
 Actionable Business Insights
 ```
 
-Customer feedback is submitted through the application and stored in MongoDB.
+Customer feedback is submitted through the application and stored in MongoDB Atlas.
 
 The platform analyzes feedback to identify sentiment and recurring customer themes.
 
-The analytics dashboard presents this information visually, while **Ask LOOP AI** allows users to ask natural-language questions about available customer feedback.
+The analytics dashboard presents this information visually, while **Ask LOOP AI** enables natural-language questions about available feedback.
+
+The **Voice-of-Customer Report** feature converts customer feedback into a structured AI-generated business report containing key concerns, positive highlights, improvement opportunities, and recommended actions.
 
 ---
 
@@ -109,16 +119,16 @@ Project LOOP provides a centralized customer feedback intelligence dashboard.
 
 The dashboard includes:
 
-* 📥 Total Feedback
-* 😊 Positive Feedback
-* 😐 Neutral Feedback
-* 😞 Negative Feedback
-* 📊 Sentiment Distribution
-* 📈 Sentiment Breakdown
-* 🧩 Customer Themes
-* 🕒 Recent Feedback
-* 🧠 LOOP Intelligence
-* ⚡ Quick Actions
+- 📥 Total Feedback
+- 😊 Positive Feedback
+- 😐 Neutral Feedback
+- 😞 Negative Feedback
+- 📊 Sentiment Distribution
+- 📈 Sentiment Breakdown
+- 🧩 Customer Themes
+- 🕒 Recent Feedback
+- 🧠 LOOP Intelligence
+- ⚡ Quick Actions
 
 This enables users to understand overall customer sentiment without manually analyzing every feedback entry.
 
@@ -141,12 +151,13 @@ Submitted feedback is stored in **MongoDB Atlas**.
 
 The stored feedback is used across:
 
-* Feedback Library
-* Dashboard
-* Sentiment Analysis
-* Customer Theme Analysis
-* Analytics
-* Ask LOOP AI
+- Feedback Library
+- Dashboard
+- Sentiment Analysis
+- Customer Theme Analysis
+- Analytics
+- Ask LOOP AI
+- Voice-of-Customer Reports
 
 ---
 
@@ -188,7 +199,7 @@ Theme analysis helps teams identify the subjects customers repeatedly discuss an
 
 **Ask LOOP AI** is the AI-powered intelligence feature of Project LOOP.
 
-It enables users to ask questions about their customer feedback and receive context-aware AI-generated insights.
+It enables users to ask questions about customer feedback and receive context-aware, AI-generated insights.
 
 ### Example Questions
 
@@ -214,23 +225,46 @@ Give me 3 recommendations to improve customer satisfaction.
 
 Ask LOOP can help identify:
 
-* Major Customer Concerns
-* Customer Satisfaction Areas
-* Recurring Themes
-* Product Issues
-* Service Issues
-* Improvement Opportunities
-* Recommended Business Actions
+- Major Customer Concerns
+- Customer Satisfaction Areas
+- Recurring Themes
+- Product Issues
+- Service Issues
+- Improvement Opportunities
+- Recommended Business Actions
 
 Ask LOOP uses available customer feedback as context, helping it function as a **feedback intelligence assistant** rather than a generic chatbot.
+
+AI responses are rendered with Markdown formatting for improved readability.
+
+---
+
+# 📑 Voice-of-Customer Report
+
+Project LOOP includes an AI-powered **Voice-of-Customer (VoC) Report Generator**.
+
+The feature analyzes available customer feedback and generates a structured business intelligence report.
+
+The generated report can include:
+
+- 📋 Executive Summary
+- 😊 Sentiment Overview
+- 🧩 Top Customer Themes
+- ⚠️ Key Customer Concerns
+- ⭐ Positive Highlights
+- 📈 Improvement Opportunities
+- 💡 Recommended Actions
+- 🧠 Final Customer Insight
+
+Reports are generated using customer feedback context and Google Gemini AI.
+
+Users can also use the browser print functionality to **print or save the report as a PDF**.
 
 ---
 
 # 🧠 LOOP Intelligence
 
 **LOOP Intelligence** focuses on transforming customer feedback into understandable and actionable insights.
-
-Instead of displaying only raw feedback, the platform helps users understand:
 
 ```text
 What happened?
@@ -254,41 +288,45 @@ Listen → Analyze → Understand → Improve
 
 ## 💻 Frontend
 
-* ⚛️ React
-* ⚡ Vite
-* 🟨 JavaScript
-* 🎨 CSS
-* 📊 Recharts
-* 🎯 React Icons
-* 📱 Responsive Web Design
+- ⚛️ React
+- ⚡ Vite
+- 🟨 JavaScript
+- 🎨 CSS
+- 📊 Recharts
+- 🎯 React Icons
+- 📝 React Markdown
+- 📱 Responsive Web Design
 
 ## ⚙️ Backend
 
-* 🟢 Node.js
-* 🚂 Express.js
-* 🔗 REST API
-* 🔐 JWT Authentication
-* 🔒 bcrypt
-* 🗂️ Mongoose
+- 🟢 Node.js
+- 🚂 Express.js
+- 🔗 REST API
+- 🔐 JWT Authentication
+- 🔒 bcrypt
+- 🗂️ Mongoose
+- 🔑 Node.js Crypto
+- ✉️ Resend
 
 ## 🗃️ Database
 
-* 🍃 MongoDB
-* ☁️ MongoDB Atlas
+- 🍃 MongoDB
+- ☁️ MongoDB Atlas
 
 ## 🤖 Artificial Intelligence
 
-* ✨ Google Gemini API
-* 😊 Sentiment Analysis
-* 🧩 Customer Theme Analysis
-* 💬 Feedback-Grounded AI Q&A
-* 💡 AI-Generated Business Insights
+- ✨ Google Gemini API
+- 😊 Sentiment Analysis
+- 🧩 Customer Theme Analysis
+- 💬 Feedback-Grounded AI Q&A
+- 💡 AI-Generated Business Insights
+- 📑 Voice-of-Customer Reports
 
 ## ☁️ Deployment
 
-* ▲ Vercel — Frontend
-* ▲ Vercel — Backend API
-* 🍃 MongoDB Atlas — Cloud Database
+- ▲ Vercel — Frontend
+- ▲ Vercel — Backend API
+- 🍃 MongoDB Atlas — Cloud Database
 
 ---
 
@@ -318,6 +356,7 @@ Project-LOOP/
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   ├── index.html
+│   ├── vercel.json
 │   ├── package.json
 │   ├── package-lock.json
 │   └── vite.config.js
@@ -332,14 +371,41 @@ Project-LOOP/
 
 Project LOOP includes an authentication system with:
 
-* User Registration
-* User Login
-* User Logout
-* JWT Authentication
-* Protected Routes
-* Authenticated Application Access
+- User Registration
+- User Login
+- User Logout
+- Show / Hide Password
+- Forgot Password
+- Email-Based Password Reset
+- JWT Authentication
+- Protected Routes
+- Authenticated Application Access
 
-Authentication is handled through the backend rather than exposing sensitive authentication logic in frontend code.
+### Password Reset Flow
+
+```text
+User enters registered email
+        ↓
+Backend generates secure reset token
+        ↓
+Hashed token stored in MongoDB
+        ↓
+Resend sends reset email
+        ↓
+User opens secure reset link
+        ↓
+New password is validated and hashed
+        ↓
+Reset token is cleared
+        ↓
+User can login with new password
+```
+
+Password-reset links expire after **15 minutes**.
+
+The backend stores a **SHA-256 hash of the reset token** rather than the raw reset token.
+
+New passwords are securely hashed using **bcrypt** before being stored.
 
 ---
 
@@ -347,14 +413,19 @@ Authentication is handled through the backend rather than exposing sensitive aut
 
 Project LOOP follows important security practices:
 
-* 🔐 JWT-based authentication
-* 🔒 Backend password handling
-* 🛡️ Protected application routes
-* 🔑 Environment-based secret management
-* 🚫 `.env` excluded from Git
-* 🤖 Gemini API integration handled server-side
-* 🗃️ MongoDB credentials kept outside frontend code
-* 🌐 Production CORS configuration
+- 🔐 JWT-based authentication
+- 🔒 bcrypt password hashing
+- 🔑 Secure password reset token generation
+- 🛡️ SHA-256 reset-token hashing
+- ⏱️ Time-limited password reset tokens
+- 🛡️ Protected application routes
+- 🔑 Environment-based secret management
+- 🚫 `.env` excluded from Git
+- 🤖 Gemini API integration handled server-side
+- ✉️ Email API integration handled server-side
+- 🗃️ MongoDB credentials kept outside frontend code
+- 🌐 Production CORS configuration
+- 🔒 Production secrets managed using environment variables
 
 Sensitive information such as:
 
@@ -362,6 +433,7 @@ Sensitive information such as:
 MONGO_URI
 JWT_SECRET
 GEMINI_API_KEY
+RESEND_API_KEY
 DATABASE_PASSWORD
 ```
 
@@ -384,15 +456,20 @@ PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secure_jwt_secret
 GEMINI_API_KEY=your_gemini_api_key
+RESEND_API_KEY=your_resend_api_key
+FRONTEND_URL=http://localhost:5173
+CORS_ORIGIN=http://localhost:5173
 ```
 
 For the frontend API connection:
 
 ```env
-VITE_API_BASE_URL=your_backend_api_url
+VITE_API_BASE_URL=http://localhost:5000
 ```
 
 > ⚠️ Never upload real API keys, passwords, JWT secrets, database credentials, or `.env` files to GitHub.
+
+For production, environment variables are configured securely through the deployment platform.
 
 ---
 
@@ -494,17 +571,19 @@ FrontEnd/dist/
 Project LOOP is deployed using a cloud-based full-stack architecture.
 
 ```text
-                PROJECT LOOP
-                     │
-        ┌────────────┴────────────┐
-        │                         │
+                 PROJECT LOOP
+                      │
+          ┌───────────┴───────────┐
+          │                       │
  React + Vite Frontend    Node.js + Express API
-        │                         │
-        └──────── Vercel ─────────┘
-                     │
-               MongoDB Atlas
-                     │
-               Google Gemini
+          │                       │
+          └──────── Vercel ───────┘
+                      │
+                MongoDB Atlas
+                      │
+                 Google Gemini
+                      │
+                    Resend
 ```
 
 ### 🚀 Production Application
@@ -522,7 +601,10 @@ Frontend      → LIVE ✅
 Backend API   → LIVE ✅
 MongoDB Atlas → CONNECTED ✅
 Gemini AI     → INTEGRATED ✅
+Resend Email  → INTEGRATED ✅
 ```
+
+The frontend includes Vercel SPA routing configuration so React Router routes such as password-reset links work correctly when opened directly.
 
 ---
 
@@ -533,6 +615,13 @@ The core Project LOOP workflow has been tested across local and production envir
 - [x] User Registration
 - [x] User Login
 - [x] User Logout
+- [x] Show / Hide Password
+- [x] Forgot Password
+- [x] Password Reset Email
+- [x] Reset Password
+- [x] Secure Reset Token
+- [x] Reset Link Expiration
+- [x] Resend Email Integration
 - [x] JWT Authentication
 - [x] Protected Routes
 - [x] Dashboard
@@ -548,6 +637,9 @@ The core Project LOOP workflow has been tested across local and production envir
 - [x] Gemini AI Integration
 - [x] AI Feedback Summary
 - [x] AI Recommendations
+- [x] AI Markdown Rendering
+- [x] Voice-of-Customer Report
+- [x] Printable / Save-as-PDF VoC Report
 - [x] Responsive Interface
 - [x] Production Frontend Build
 - [x] Production Frontend Deployment
@@ -556,6 +648,8 @@ The core Project LOOP workflow has been tested across local and production envir
 - [x] Frontend ↔ Backend API Connection
 - [x] Production Authentication
 - [x] Production Feedback Persistence
+- [x] Production Password Reset Flow
+- [x] Vercel SPA Deep-Link Routing
 
 ---
 
@@ -563,22 +657,25 @@ The core Project LOOP workflow has been tested across local and production envir
 
 Project LOOP provides a responsive user interface designed for:
 
-* 🖥️ Desktop
-* 💻 Laptop
-* 📱 Tablet
-* 📲 Mobile
+- 🖥️ Desktop
+- 💻 Laptop
+- 📱 Tablet
+- 📲 Mobile
 
 Responsive design is implemented across:
 
-* Landing Page
-* Navigation
-* Registration
-* Login
-* Dashboard
-* Feedback Pages
-* Analytics
-* Customer Themes
-* Ask LOOP AI
+- Landing Page
+- Navigation
+- Registration
+- Login
+- Forgot Password
+- Reset Password
+- Dashboard
+- Feedback Pages
+- Analytics
+- Customer Themes
+- Ask LOOP AI
+- Voice-of-Customer Reports
 
 ---
 
@@ -588,7 +685,6 @@ Responsive design is implemented across:
 
 ---
 
-
 # 👥 Team & Contributions
 
 **Project LOOP** was collaboratively developed by a **4-member development team**, with responsibilities divided between frontend and backend development.
@@ -597,7 +693,7 @@ Responsive design is implemented across:
 |-------------|------|----------------------|
 | **Ainul Haq** | 💻 Frontend Developer | Frontend development, UI implementation, API integration, responsive interface & deployment |
 | **Dhanalakshmi Panugandla** | 💻 Frontend Developer | Frontend development, components, pages & UI |
-| **Nitin** | ⚙️ Backend Developer | Backend development, REST APIs, authentication & database integration |
+| **Nitin Chauhan** | ⚙️ Backend Developer | Backend development, REST APIs, authentication & database integration |
 | **Prajapati Satyam** | ⚙️ Backend Developer | Backend development, MongoDB, services & AI integration |
 
 ---
@@ -608,17 +704,20 @@ The frontend team was responsible for building and integrating the user-facing a
 
 Key responsibilities included:
 
-* ⚛️ React + Vite Development
-* 🎨 User Interface Implementation
-* 🧩 Reusable Components
-* 📊 Dashboard Interface
-* 💬 Feedback Management Interface
-* 🔐 Authentication Integration
-* 🔗 Backend API Integration
-* 📈 Data Visualization
-* 📱 Responsive Design
-* 🧪 Frontend Testing & Debugging
-* 🚀 Production Frontend Configuration
+- ⚛️ React + Vite Development
+- 🎨 User Interface Implementation
+- 🧩 Reusable Components
+- 📊 Dashboard Interface
+- 💬 Feedback Management Interface
+- 🔐 Authentication Integration
+- 🔑 Password Reset Interface
+- 🤖 AI Feature Interface Integration
+- 📑 Voice-of-Customer Report Interface
+- 🔗 Backend API Integration
+- 📈 Data Visualization
+- 📱 Responsive Design
+- 🧪 Frontend Testing & Debugging
+- 🚀 Production Frontend Configuration
 
 ---
 
@@ -628,18 +727,21 @@ The backend team was responsible for application logic, data persistence, APIs, 
 
 Key responsibilities included:
 
-* 🟢 Node.js + Express Development
-* 🔗 REST API Development
-* 🔐 JWT Authentication
-* 👤 User Management
-* 🍃 MongoDB & Mongoose Integration
-* 💬 Customer Feedback APIs
-* 😊 Sentiment Analysis Services
-* 🧩 Customer Theme Services
-* 🤖 Google Gemini AI Integration
-* 🔒 Backend Security
-* ⚙️ Environment Configuration
-* 🚀 Production API Configuration
+- 🟢 Node.js + Express Development
+- 🔗 REST API Development
+- 🔐 JWT Authentication
+- 👤 User Management
+- 🔑 Password Reset API
+- ✉️ Email Service Integration
+- 🍃 MongoDB & Mongoose Integration
+- 💬 Customer Feedback APIs
+- 😊 Sentiment Analysis Services
+- 🧩 Customer Theme Services
+- 🤖 Google Gemini AI Integration
+- 📑 Voice-of-Customer AI Generation
+- 🔒 Backend Security
+- ⚙️ Environment Configuration
+- 🚀 Production API Configuration
 
 ---
 
@@ -661,30 +763,30 @@ Cloud Deployment
    🔄 PROJECT LOOP
 ```
 
-The frontend and backend teams worked together to connect the user interface, REST API, MongoDB database, analytics functionality, and AI-powered intelligence features.
+The frontend and backend teams worked together to connect the user interface, REST API, MongoDB database, analytics functionality, authentication, and AI-powered intelligence features.
 
 ---
 
-## 👨‍💻 My Contribution
-
-### Ainul Haq — Frontend Developer
-
-My primary contribution to **Project LOOP** focused on frontend development, integration, testing, and production readiness.
 
 ### Key Contributions
 
-* ⚛️ React + Vite frontend development
-* 🎨 User interface implementation
-* 🧩 Frontend component integration
-* 📊 Dashboard and analytics interface
-* 💬 Customer feedback interface
-* 🔐 Authentication frontend integration
-* 🔗 Frontend-to-backend API integration
-* 📈 Data visualization integration
-* 📱 Responsive user experience
-* 🧪 Frontend testing and debugging
-* ⚙️ Production API configuration
-* 🚀 Production frontend deployment and verification
+- ⚛️ React + Vite frontend development
+- 🎨 User interface implementation
+- 🧩 Frontend component integration
+- 📊 Dashboard and analytics interface
+- 💬 Customer feedback interface
+- 🔐 Authentication frontend integration
+- 👁️ Show / Hide Password UI
+- 🔑 Forgot & Reset Password UI
+- 📑 Voice-of-Customer Report interface
+- 🤖 AI feature interface integration
+- 🔗 Frontend-to-backend API integration
+- 📈 Data visualization integration
+- 📱 Responsive user experience
+- 🧪 Frontend testing and debugging
+- ⚙️ Production API configuration
+- ▲ Vercel SPA routing configuration
+- 🚀 Production frontend deployment and verification
 
 ---
 
@@ -692,17 +794,18 @@ My primary contribution to **Project LOOP** focused on frontend development, int
 
 Potential future enhancements include:
 
-* 📄 CSV Feedback Import
-* 🔍 Advanced Feedback Search & Filters
-* 👥 Advanced Role-Based Access
-* 📑 Voice-of-Customer Report Generation
-* 📤 Exportable Analytics Reports
-* 📈 Advanced Trend Detection
-* ⚡ Real-Time Feedback Updates
-* 🧠 Advanced AI Insights
-* 🧪 Automated Testing
-* 🔄 CI/CD Enhancements
-* 📡 Production Monitoring
+- 📄 CSV Feedback Import
+- 🔍 Advanced Feedback Search & Filters
+- 👥 Advanced Role-Based Access
+- 📤 Advanced Report Export Options
+- 📈 Advanced Trend Detection
+- ⚡ Real-Time Feedback Updates
+- 🧠 Advanced AI Insights
+- 🧪 Automated Testing
+- 🔄 CI/CD Enhancements
+- 📡 Production Monitoring
+- 🔐 Advanced Session Security
+- 📧 Custom Production Email Domain
 
 ---
 
