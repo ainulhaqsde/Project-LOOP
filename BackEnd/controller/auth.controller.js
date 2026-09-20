@@ -324,6 +324,17 @@ const forgot_password_controller = async (req, res) => {
     });
 
 
+    // =====================================================
+    // TEMPORARY DEBUG
+    // Remove this after password reset is working.
+    // =====================================================
+
+    console.log(
+      "FORGOT PASSWORD DEBUG:",
+      user ? "USER FOUND" : "USER NOT FOUND"
+    );
+
+
     // Do not reveal whether the account exists.
     if (!user) {
 
