@@ -24,7 +24,7 @@ It combines **feedback management, sentiment analysis, recurring theme detection
 
 ### 🌐 Application
 
-[🚀 Launch Project LOOP](https://project-loop-sand.vercel.app)
+[🚀 Launch Project LOOP](https://projectloop-ainuldev.vercel.app/)
 
 ### ⚙️ Backend API
 
