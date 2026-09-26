@@ -17,4 +17,5 @@ npm-debug.log*
 # VS Code / Windows
 .vscode/
 .DS_Store
-Thumbs.db
+Thumbs.dbBackEnd/.env
+FrontEnd/.env
